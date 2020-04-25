@@ -25,14 +25,14 @@ player_img = pygame.image.load(player_url)
 player_pos = player_img.get_rect(centerx = SCREEN_WIDTH // 2,
                                  bottom = SCREEN_HEIGHT)
 #운석 이미지 불러오기
-rock_url = 'resources/d_images/adfs.png'
-rock_img = pygame.image.load(rock_url)
+khimchie_url = 'resources/d_images/khimchie.png'
+khimchie_img = pygame.image.load(khimchie_url)
 #rock = list()
-rocks = []
+khimchies = []
 for cnt in range(3):
-    rock_pos = rock_img.get_rect(left = 200 * cnt +100, top = 100)
-    rocks.append(rock_pos)
-    print(rock_pos)
+    khimchie_pos = khimchie_img.get_rect(left = 200 * cnt +100, top = 100)
+    khimchies.append(khimchie_pos)
+    print(khimchie_pos)
 
 #게임 루프
 while True:
@@ -56,17 +56,17 @@ while True:
             player_pos.right = SCREEN_WIDTH
 
     #적 내려오기
-    for one in rocks:
+    for one in khimchies:
         one.top +=10
         if one.bottom > SCREEN_HEIGHT:
             one.top = -100
-            one.left = random.randint(0, SCREEN_WIDTH - rock_img.get_width())
+            one.left = random.randint(0, SCREEN_WIDTH - khimchie_img.get_width())
 
     #이미지 그리기 및 화면 업데이트
     screen.blit(player_img, player_pos)
 
-    for one in rocks:
-        screen.blit(rock_img, one)
+    for one in khimchies:
+        screen.blit(khimchie_img, one)
     pygame.display.flip()
 
     #프레임 설정
