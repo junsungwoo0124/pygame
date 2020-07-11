@@ -35,11 +35,12 @@ while True:
     for c_idx in range(COL_COUNT):
         for r_idx in range(ROW_COUNT):
             one_rect = (c_idx * CELL_SIZE, r_idx * CELL_SIZE, CELL_SIZE, CELL_SIZE)
-            pygame.draw.rect(screen, GRAY, one_rect, 1)\
+            pygame.draw.rect(screen, GRAY, one_rect, 1)
 
 
 
-    #화면 업데이트
+    # 화면 업데이트
     pygame.display.update()
-#게임 종료
+
+# 게임 종료
 pygame.quit()
