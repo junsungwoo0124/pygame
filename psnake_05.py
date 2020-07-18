@@ -27,6 +27,7 @@ UP = 2
 DOWN = 3
 direction = DOWN
 score = 0
+STOP = 4
 
 score_font = pygame.font.SysFont("comicsans", 40)
 s_pos =  (COL_COUNT //2, ROW_COUNT // 2)
@@ -59,6 +60,8 @@ while True:
             direction = UP
         if event.key == pygame.K_DOWN:
             direction = DOWN
+        if event.key == pygame.K_SPACE:
+            direction = STOP
 
     head = bodies[0]
     c_idx = head[0]
@@ -72,16 +75,20 @@ while True:
         r_idx -= 1
     elif direction == DOWN:
         r_idx += 1
+    elif direction == STOP:
+        pass
     head_pos = (c_idx, r_idx)
     bodies.insert(0, head_pos)
 
     if head_pos in foods:
         foods.remove(head_pos)
         add_food()
-        score += 10
     else:
+        if direction is not STOP:
+            score += 10
+            bodies.pop()
+            bodies.insert(0, head_pos)
 
-        bodies.pop()
 
     screen.fill(Black)
 
